@@ -13,9 +13,9 @@ Big thanks to **Akshay Saini** for creating insightful content that’s helping 
 Sharing what I learn to help others and reinforce my understanding.
 
 ---
-## Lesson-2 : Node.js (JS on server)
+# Lesson-2 : Node.js (JS on server)
 
-### 📌 How Web works
+## 📌 How Web works
 
 
 
@@ -25,19 +25,19 @@ This document provides a basic overview of how the web functions, from the momen
 
 ---
 
-## 🚀 Step-by-Step Process
+### 🚀 Step-by-Step Process
 
-### 1. Entering a URL
+#### 1. Entering a URL
 You enter a web address like `https://www.example.com` into your browser.
 
 ---
 
-### 2. DNS Lookup
+#### 2. DNS Lookup
 The browser asks a **DNS (Domain Name System)** server to convert the human-readable domain (`example.com`) into an **IP address** (e.g., `192.0.2.1`), which locates the server on the internet.
 
 ---
 
-### 3. Making an HTTP/HTTPS Request
+#### 3. Making an HTTP/HTTPS Request
 Once the IP address is known, the browser sends a request using either:
 - **HTTP** (HyperText Transfer Protocol)
 - **HTTPS** (Secure HTTP with encryption)
@@ -46,7 +46,7 @@ This request asks the web server to send the contents of the requested page.
 
 ---
 
-### 4. Server Processes the Request
+#### 4. Server Processes the Request
 The **web server** (e.g., Apache, Nginx, or a cloud platform):
 - Receives the request
 - Executes server-side logic if needed (e.g., PHP, Node.js)
@@ -55,14 +55,14 @@ The **web server** (e.g., Apache, Nginx, or a cloud platform):
 
 ---
 
-### 5. HTTP Response
+#### 5. HTTP Response
 The server responds with:
 - **Status Code** (e.g., `200 OK`, `404 Not Found`)
 - **Content** (HTML, CSS, JavaScript, images, or JSON data)
 
 ---
 
-### 6. Browser Renders the Page
+#### 6. Browser Renders the Page
 The browser:
 - Parses the HTML
 - Loads styles from CSS files
@@ -71,14 +71,14 @@ The browser:
 
 ---
 
-### 7. Interaction and Dynamic Updates
+#### 7. Interaction and Dynamic Updates
 As you interact:
 - JavaScript can update content dynamically (using DOM manipulation)
 - Data can be fetched in real-time via **AJAX**, **Fetch API**, or **WebSockets**
 
 ---
 
-## 📦 Technologies Involved
+#### 📦 Technologies Involved
 
 | Component      | Technology Examples                        |
 |----------------|--------------------------------------------|
@@ -91,7 +91,7 @@ As you interact:
 
 ---
 
-## 📘 Additional Resources
+### 📘 Additional Resources
 
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web)
 - [How DNS Works](https://www.cloudflare.com/learning/dns/what-is-dns/)
