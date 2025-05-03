@@ -57,4 +57,4 @@ It allows JavaScript to run **outside the browser**, such as on:
 
 #### ✅ Happpy Learning:
 
-✅ This content is part of my learning journey in Node.js. If you find any mistakes or want to suggest improvements, feel free to contribute. Let's learn and grow together!
+ - This content is part of my learning journey in Node.js. If you find any mistakes or want to suggest improvements, feel free to contribute. Let's learn and grow together!
