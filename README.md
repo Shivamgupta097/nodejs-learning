@@ -42,4 +42,15 @@ It allows JavaScript to run **outside the browser**, such as on:
 
 ---
 
+### 🗂️ Timeline (Node.js History Diagram)
+
+```text
+2009   ──────> Ryan Dahl creates Node.js (SpiderMonkey → V8)
+2010   ──────> NPM introduced by Isaac
+2011   ──────> Joyent + Microsoft add Windows support
+2012   ──────> Ryan leaves, Joyent takes over
+2014   ──────> Fork: IO.js
+2015   ──────> Merge: Node.js + IO.js
+2019   ──────> Node.js moves to OpenJS Foundation
+
 ✅ This content is part of my learning journey in Node.js. If you find any mistakes or want to suggest improvements, feel free to contribute. Let's learn and grow together!
