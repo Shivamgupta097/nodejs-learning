@@ -15,9 +15,7 @@ Sharing what I learn to help others and reinforce my understanding.
 ---
 # Lesson-2 : Node.js (JS on server)
 
-## 📌 How Web works
-
-
+## 📌 Part 1  - How Web works
 
 This document provides a basic overview of how the web functions, from the moment you enter a URL in your browser to the point where a webpage is rendered on your screen.
 
@@ -100,6 +98,30 @@ As you interact:
 ---
 
 > ✨ Understanding how the web works is the foundation for becoming a great web developer!
+
+
+---
+
+
+## Part 2 -  📌 Server with Node.js
+
+
+- [Node Js Ecosysystem](./images/node-js-ecosystem.png)
+In starting Javascript was used in Client side 
+After node.js come we can use it on server side too.
+Now a developer who know Javascript properly can build full stack application with frontend and backend which leverage to full stack development with stack like (MERN) with single developer.
+
+Node.js   = v8 + super powers (like)
+
+Majority of Node.js is written in C++ and Javascript
+V8 engine is written in C++ and execute js code
+Majority of code is written in C++ code
+-C++   --> 72%
+-javascript --> 26%
+-python -1%
+typescript ->0.3%
+c-> 0.3%
+others -- remaining
 
 
 ---
