@@ -13,9 +13,12 @@ Big thanks to **Akshay Saini** for creating insightful content that’s helping 
 Sharing what I learn to help others and reinforce my understanding.
 
 ---
-## Lesson-1 : Intorduction to Node.js (By Shivam Gupta)
+## Lesson-2 : Node.js (JS on server)
 
-### 📌 What is Node.js?
+### 📌 How Web works
+
+![Web Diagram from request from client and response from server](./images/web-diagram.png)
+
 
 Node.js is a **JavaScript runtime** built on **Chrome's V8 engine**.  
 It allows JavaScript to run **outside the browser**, such as on:
