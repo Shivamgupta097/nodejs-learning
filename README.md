@@ -6,6 +6,15 @@
 
 ---
 
+### 📚 Guided by: [Akshay Saini](https://www.linkedin.com/in/akshaymarch7/)  **Founder of Namaste Dev**
+Big thanks to **Akshay Saini** for creating insightful content that’s helping me and many others understand Node.js in a simple and structured way. 🙌
+
+### 👨‍💻 Author: [Shivam Gupta](https://www.linkedin.com/in/shivam-gupta-92a129175/)  
+Sharing what I learn to help others and reinforce my understanding.
+
+---
+
+
 ### 📌 What is Node.js?
 
 Node.js is a **JavaScript runtime** built on **Chrome's V8 engine**.  
