@@ -17,54 +17,91 @@ Sharing what I learn to help others and reinforce my understanding.
 
 ### 📌 How Web works
 
+
+
+This document provides a basic overview of how the web functions, from the moment you enter a URL in your browser to the point where a webpage is rendered on your screen.
+
 ![Web Diagram from request from client and response from server](./images/web-diagram.png)
 
+---
 
-Node.js is a **JavaScript runtime** built on **Chrome's V8 engine**.  
-It allows JavaScript to run **outside the browser**, such as on:
+## 🚀 Step-by-Step Process
 
-- Servers  
-- IoT devices  
-- Smartwatches  
-- And more
+### 1. Entering a URL
+You enter a web address like `https://www.example.com` into your browser.
 
 ---
 
-### 📖 History of Node.js
-
-- Created in **2009** by **Ryan Dahl**, initially using **Mozilla's SpiderMonkey** engine.
-- After 2 days, he switched to **Google’s V8 engine** and never looked back.
-- Originally named **Web.js**, but later renamed to **Node.js** by Ryan.
-
-#### ❓ Why Node.js was created:
-
-- Traditional servers like **Apache HTTP Server** had **blocking I/O**.
-- Node.js introduced **non-blocking I/O**, making it more efficient for handling multiple requests.
-
-#### 🚀 Milestones:
-
-- Sponsored by **Joyent** (where Ryan worked), which helped Node.js grow.
-- **2010**: **NPM (Node Package Manager)** was created by **Isaac Z. Schlueter**.
-- Initially supported only **Linux and macOS**.
-- **2011**: **Microsoft and Joyent** added **Windows support**, making Node.js cross-platform.
-- **2012**: Ryan left the project; Joyent took over.
-- **2014**: A fork named **IO.js** was created.
-- **2015**: Node.js and IO.js merged again.
-- **2019–Present**: Maintained by the **OpenJS Foundation**, after the Node.js Foundation merged with the JS Foundation.
+### 2. DNS Lookup
+The browser asks a **DNS (Domain Name System)** server to convert the human-readable domain (`example.com`) into an **IP address** (e.g., `192.0.2.1`), which locates the server on the internet.
 
 ---
 
-#### 🗂️ Timeline (Node.js History Diagram)
+### 3. Making an HTTP/HTTPS Request
+Once the IP address is known, the browser sends a request using either:
+- **HTTP** (HyperText Transfer Protocol)
+- **HTTPS** (Secure HTTP with encryption)
 
-```text
-2009   ──────> Ryan Dahl creates Node.js (SpiderMonkey → V8)
-2010   ──────> NPM introduced by Isaac
-2011   ──────> Joyent + Microsoft add Windows support
-2012   ──────> Ryan leaves, Joyent takes over
-2014   ──────> Fork: IO.js
-2015   ──────> Merge: Node.js + IO.js
-2019   ──────> Node.js moves to OpenJS Foundation.
-```
+This request asks the web server to send the contents of the requested page.
+
+---
+
+### 4. Server Processes the Request
+The **web server** (e.g., Apache, Nginx, or a cloud platform):
+- Receives the request
+- Executes server-side logic if needed (e.g., PHP, Node.js)
+- Retrieves data or files
+- Sends a response back to the browser
+
+---
+
+### 5. HTTP Response
+The server responds with:
+- **Status Code** (e.g., `200 OK`, `404 Not Found`)
+- **Content** (HTML, CSS, JavaScript, images, or JSON data)
+
+---
+
+### 6. Browser Renders the Page
+The browser:
+- Parses the HTML
+- Loads styles from CSS files
+- Executes JavaScript
+- Displays content visually on your screen
+
+---
+
+### 7. Interaction and Dynamic Updates
+As you interact:
+- JavaScript can update content dynamically (using DOM manipulation)
+- Data can be fetched in real-time via **AJAX**, **Fetch API**, or **WebSockets**
+
+---
+
+## 📦 Technologies Involved
+
+| Component      | Technology Examples                        |
+|----------------|--------------------------------------------|
+| Browser        | Chrome, Firefox, Safari                    |
+| Protocols      | HTTP, HTTPS, DNS, TCP/IP                   |
+| Web Server     | Apache, Nginx, Node.js, Express            |
+| Frontend       | HTML, CSS, JavaScript                      |
+| Backend        | PHP, Python, Java, Node.js                 |
+| APIs           | REST, GraphQL, WebSockets                  |
+
+---
+
+## 📘 Additional Resources
+
+- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web)
+- [How DNS Works](https://www.cloudflare.com/learning/dns/what-is-dns/)
+- [How Browsers Work](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+
+---
+
+> ✨ Understanding how the web works is the foundation for becoming a great web developer!
+
+
 ---
 
 #### ✅ Happpy Learning:
