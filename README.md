@@ -53,4 +53,5 @@ It allows JavaScript to run **outside the browser**, such as on:
 2015   ──────> Merge: Node.js + IO.js
 2019   ──────> Node.js moves to OpenJS Foundation
 
+---
 ✅ This content is part of my learning journey in Node.js. If you find any mistakes or want to suggest improvements, feel free to contribute. Let's learn and grow together!
