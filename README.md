@@ -13,182 +13,182 @@ Big thanks to **Akshay Saini** for creating insightful content that’s helping 
 Sharing what I learn to help others and reinforce my understanding.
 
 ---
-## Lesson-1 : Intorduction to Node.js 
 
-### 📌 What is Node.js?
+# 👨‍💻 Namaste Node.js - Ep 03: Let's Write Code
 
-Node.js is a **JavaScript runtime** built on **Chrome's V8 engine**.  
-It allows JavaScript to run **outside the browser**, such as on:
-
-- Servers  
-- IoT devices  
-- Smartwatches  
-- And more
+Welcome to Episode 03 of the **Namaste Node.js** journey!  
+In this episode, we'll set up Node.js properly, understand the REPL environment, dive into global objects in browsers vs Node.js, and run our first Node program.
 
 ---
 
-### 📖 History of Node.js
+## 🧱 Part 1: Setup Environment
 
-- Created in **2009** by **Ryan Dahl**, initially using **Mozilla's SpiderMonkey** engine.
-- After 2 days, he switched to **Google’s V8 engine** and never looked back.
-- Originally named **Web.js**, but later renamed to **Node.js** by Ryan.
+### 🔽 Step 1: Download Node.js
 
-#### ❓ Why Node.js was created:
+1. Visit the official Node.js website:  
+   👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
+2. Choose your:
+   - **Node.js version** (LTS recommended)
+   - **Operating System**
+   - **Installation method** – recommended: **NVM (Node Version Manager)**
 
-- Traditional servers like **Apache HTTP Server** had **blocking I/O**.
-- Node.js introduced **non-blocking I/O**, making it more efficient for handling multiple requests.
+### 🚀 Why NVM?
 
-#### 🚀 Milestones:
+Using **NVM** (Node Version Manager) allows you to:
+- Easily install and switch between multiple versions of Node.js  
+- Work on different projects requiring different Node versions  
+- Example:
+  ```bash
+  nvm install 22
+  nvm use 22
+  ```
 
-- Sponsored by **Joyent** (where Ryan worked), which helped Node.js grow.
-- **2010**: **NPM (Node Package Manager)** was created by **Isaac Z. Schlueter**.
-- Initially supported only **Linux and macOS**.
-- **2011**: **Microsoft and Joyent** added **Windows support**, making Node.js cross-platform.
-- **2012**: Ryan left the project; Joyent took over.
-- **2014**: A fork named **IO.js** was created.
-- **2015**: Node.js and IO.js merged again.
-- **2019–Present**: Maintained by the **OpenJS Foundation**, after the Node.js Foundation merged with the JS Foundation.
+### ✅ Verify Node & NPM Installation
 
----
-
-#### 🗂️ Timeline (Node.js History Diagram)
-
-```text
-2009   ──────> Ryan Dahl creates Node.js (SpiderMonkey → V8)
-2010   ──────> NPM introduced by Isaac
-2011   ──────> Joyent + Microsoft add Windows support
-2012   ──────> Ryan leaves, Joyent takes over
-2014   ──────> Fork: IO.js
-2015   ──────> Merge: Node.js + IO.js
-2019   ──────> Node.js moves to OpenJS Foundation.
+```bash
+node -v     # Check Node.js version
+npm -v      # Check npm version
 ```
----
 
+### 🛠️ Step 2: Install VS Code
 
----
-
-# Lesson 2: Node.js (JavaScript on the Server)
-
-## 📌 Part 1 - How the Web Works
-
-This section provides a basic overview of how the web functions — from entering a URL in your browser to seeing a webpage rendered.
-
-![Web Diagram from request from client and response from server](./images/web-diagram.png)
+Install [Visual Studio Code](https://code.visualstudio.com/) — a powerful code editor perfect for Node.js development.
 
 ---
 
-### 🚀 Step-by-Step Process
+## ⚙️ Part 2: Node REPL & Global Objects
 
-#### 1. Entering a URL
-You enter a web address like `https://www.example.com` into your browser.
+### 🌀 What is REPL?
 
----
+**REPL** stands for:
 
-#### 2. DNS Lookup
-The browser contacts a **DNS (Domain Name System)** server to convert the domain (`example.com`) into an **IP address** (e.g., `192.0.2.1`), which identifies the server on the internet.
+- **R** – Read  
+- **E** – Evaluate  
+- **P** – Print  
+- **L** – Loop  
 
----
+You can enter REPL by just typing:
 
-#### 3. Making an HTTP/HTTPS Request
-Once the IP address is resolved, the browser sends a request using:
-- **HTTP** (HyperText Transfer Protocol)
-- **HTTPS** (Secure HTTP with encryption)
+```bash
+node
+```
 
----
+It gives you a live Node.js shell to write and test JavaScript code interactively.
 
-#### 4. Server Processes the Request
-The **web server** (e.g., Apache, Nginx, Node.js) receives the request:
-- Executes server-side logic (like querying a database)
-- Fetches data or files
-- Sends a response back to the browser
+### 🔍 Behind the Scenes:
 
----
-
-#### 5. HTTP Response
-The server responds with:
-- A **status code** (`200 OK`, `404 Not Found`, etc.)
-- **Content** such as HTML, CSS, JS, JSON, or images
+When you run `node` in terminal:
+- It starts the **V8 engine** (built in C++).
+- V8 converts your JavaScript code to machine code and executes it.
 
 ---
 
-#### 6. Browser Renders the Page
-The browser:
-- Parses the HTML
-- Loads CSS and JS files
-- Executes JS
-- Displays the webpage
+## 🌐 Global Object: Browser vs Node.js
+
+### 🧭 In the Browser:
+
+Open DevTools Console and type:
+
+```js
+window === this     // true
+window === self     // true
+window === frames   // true
+```
+
+- All of them point to the same global object: `window`.
+
+### ⚙️ In Node.js:
+
+In your `app.js`, try:
+
+```js
+console.log(global);      // Node's global object
+console.log(this);        // Outputs: {}
+```
+
+- In Node, the global object is called `global`.
+- At the module level, `this` is `{}` (empty object).
+
+### 🔄 Confused? Use `globalThis`
+
+To have a **universal global object** across all environments:
+
+```js
+console.log(globalThis);
+```
+
+- ✅ Works in **Browser** and **Node**
+- ✅ Standardized by **OpenJS Foundation**
+
+### 🧩 What’s inside Node’s Global Object?
+
+- `setTimeout`
+- `setInterval`
+- `setImmediate`
+- `console`, `Buffer`, etc.
 
 ---
 
-#### 7. Interaction & Dynamic Updates
-As users interact:
-- JavaScript updates the UI dynamically (DOM manipulation)
-- Data can be fetched asynchronously using **AJAX**, **Fetch API**, or **WebSockets**
+## ✏️ Let's Write Some Code
+
+### 1️⃣ Create a Folder:
+
+```bash
+mkdir namaste-node
+cd namaste-node
+```
+
+### 2️⃣ Create a File `app.js`:
+
+```js
+var name = "Shivam Gupta";
+var a = 10;
+var b = 20;
+
+console.log(name);
+console.log(a + b);
+```
+
+### 3️⃣ Open VS Code Terminal:
+- Windows: `Ctrl + ~`
+- macOS: `Cmd + ~`
+
+### 4️⃣ Run the Program:
+
+```bash
+node app.js
+```
+
+### ⚙️ What happens?
+
+Node passes `app.js` to the **V8 engine**, which converts the code into machine code and executes it.
 
 ---
 
-### 📦 Technologies Involved
+## 📋 Recap Table
 
-| Component      | Examples                                |
-|----------------|------------------------------------------|
-| Browser        | Chrome, Firefox, Safari                  |
-| Protocols      | HTTP, HTTPS, DNS, TCP/IP                 |
-| Web Server     | Apache, Nginx, Node.js, Express          |
-| Frontend       | HTML, CSS, JavaScript                    |
-| Backend        | PHP, Python, Java, Node.js               |
-| APIs           | REST, GraphQL, WebSockets                |
+| Feature                  | Browser      | Node.js     |
+|--------------------------|--------------|-------------|
+| Global Object            | `window`     | `global`    |
+| Common Global Object     | ✅ `globalThis` | ✅ `globalThis` |
+| `this` at top-level      | `window`     | `{}`        |
+| Engine                   | V8           | V8          |
 
 ---
 
-> ✨ Understanding how the web works is foundational for becoming a great web developer.
+## ✅ Conclusion
+
+In this episode, you learned:
+
+- How to install Node.js using NVM
+- What REPL is and how it works
+- The difference between global objects in browser and Node.js
+- How to run your first Node.js program
+- How `globalThis` simplifies global object handling
+
+> Great work! Now you're ready to explore **Node.js modules** and more in the next episode.
 
 ---
-
-## 📌 Part 2 - Server with Node.js
-
-Thanks to Node.js, we can now use JavaScript on the server side too. This means a developer skilled in JavaScript can build full-stack applications using frontend and backend technologies — enabling stacks like **MERN** (MongoDB, Express, React, Node.js) with a single language.
-
----
-
-### 🔍 How Node.js Works
-
-- **Node.js** is a C++ application.
-- It uses the **Chrome V8 JavaScript engine**, which is also written in C++.
-- **V8** compiles JavaScript into **machine code** that your computer can execute.
-- **ECMAScript** standards define the rules and syntax of JavaScript.
-- All JavaScript engines (V8, SpiderMonkey, etc.) must follow ECMAScript standards to ensure consistency.
-
-
----
-
-### 🌍 Node.js Ecosystem
-
-![Node.js Ecosystem](./images/node-js-ecosystem.png)
-
-**Node.js** = V8 Engine + libuv + Node APIs
-
-/text
-
-| Component       | Written In | Responsibility                               |
-|------------------|------------|-----------------------------------------------|
-| V8 Engine         | C++        | Compiles and executes JS                      |
-| libuv            | C          | Handles I/O operations, event loop, threads   |
-| Event Loop       | C/libuv    | Manages async operations                      |
-| Thread Pool      | C/libuv    | Offloads blocking/heavy tasks                 |
-| C++ Bindings     | C++        | Interface between JS and OS-level operations  |
-| Node.js APIs     | JS/C++     | Modules like `fs`, `http`, etc.               |
-| npm              | JavaScript | Manages packages and dependencies             |
-
-The **V8 engine** ensures ECMAScript compliance, while Node.js extends it with capabilities like:
-- File system access
-- Networking (HTTP APIs)
-- Database connectivity
-- OS interactions
-
-These extras are not part of standard JavaScript but are made possible by Node.js bindings and native modules.
-
----
-
 
 #### ✅ Happpy Learning:
 
