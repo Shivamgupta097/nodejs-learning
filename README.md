@@ -23,6 +23,16 @@ In this episode, we’ll dive into:
 - How `require` and `module.exports` work in Node.js  
 - Default vs Named Exports  
 - Common mistakes and their fixes  
+- Module Wrapper (IIFE)
+- Module Scope
+- Types of module pattern in JS (CommonJs / ESM)
+- Industry Standard best Practises
+- Module Aliases
+- Namespace
+- Module Combine export
+- Dynamic import in module
+- Module Caching
+
 
 ---
 
@@ -240,9 +250,6 @@ console.log(sumModule.calcSum(2, 3));   // 5
 ---
 
 
-
-
-# Node.js Module System: A Complete Guide
 
 ## Module Scope
 
@@ -855,15 +862,29 @@ console.log(data);
 # Thanks!
 
 ---
-
-## ✅ Conclusion
+# ✅ Conclusion
 
 In this episode, you learned:
 
 - Why modular code is important  
 - How to use `require()` and `module.exports` in Node.js  
 - Differences between default and named exports  
-- How Node modules are isolated and must explicitly export code
+- How Node modules are isolated and must explicitly export code  
+
+- Why modules are needed in JavaScript  
+- How `require` and `module.exports` work in Node.js  
+- Default vs Named Exports  
+- Common mistakes and their fixes  
+- Module Wrapper (IIFE)  
+- Module Scope  
+- Types of module pattern in JS (CommonJS / ESM)  
+- Industry Standard Best Practices  
+- Module Aliases  
+- Namespace  
+- Module Combined Export  
+- Dynamic import in modules  
+- Module Caching  
+
 
 > Great job! 🎉  
 > Up next: **Episode 05 - The Module Wrapper Function** – where we’ll uncover how Node wraps your code under the hood.
