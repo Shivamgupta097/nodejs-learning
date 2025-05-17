@@ -6,7 +6,7 @@
 
 ---
 
-### 📚 Guided by: [Akshay Saini](https://www.linkedin.com/in/akshaymarch7/)  **(Founder of Namaste Dev)**
+### 📚 Guided by: [Akshay Saini](https://www.linkedin.com/in/akshaymarch7/) *(Founder of Namaste Dev)*  
 Big thanks to **Akshay Saini** for creating insightful content that’s helping me and many others understand Node.js in a simple and structured way. 🙌
 
 ### 👨‍💻 Author: [Shivam Gupta](https://www.linkedin.com/in/shivam-gupta-92a129175/)  
@@ -14,165 +14,228 @@ Sharing what I learn to help others and reinforce my understanding.
 
 ---
 
-# 👨‍💻 Namaste Node.js - Ep 03: Let's Write Code
+# 👨‍💻 Namaste Node.js - Ep 04: `module.exports` & `require`
 
-Welcome to Episode 03 of the **Namaste Node.js** journey!  
-In this episode, we'll set up Node.js properly, understand the REPL environment, dive into global objects in browsers vs Node.js, and run our first Node program.
+Welcome to Episode 04 of the **Namaste Node.js** journey!  
+In this episode, we’ll dive into:
 
----
-
-## 🧱 Part 1: Setup Environment
-
-### 🔽 Step 1: Download Node.js
-
-1. Visit the official Node.js website:  
-   👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
-2. Choose your:
-   - **Node.js version** (LTS recommended)
-   - **Operating System**
-   - **Installation method** – recommended: **NVM (Node Version Manager)**
-
-### 🚀 Why NVM?
-
-Using **NVM** (Node Version Manager) allows you to:
-- Easily install and switch between multiple versions of Node.js  
-- Work on different projects requiring different Node versions  
-- Example:
-  ```bash
-  nvm install 22
-  nvm use 22
-  ```
-
-### ✅ Verify Node & NPM Installation
-
-```bash
-node -v     # Check Node.js version
-npm -v      # Check npm version
-```
-
-### 🛠️ Step 2: Install VS Code
-
-Install [Visual Studio Code](https://code.visualstudio.com/) — a powerful code editor perfect for Node.js development.
+- Why modules are needed in JavaScript  
+- How `require` and `module.exports` work in Node.js  
+- Default vs Named Exports  
+- Common mistakes and their fixes  
 
 ---
 
-## ⚙️ Part 2: Node REPL & Global Objects
+## 🧱 Part 1: What Are Modules & Why Do We Need Them?
 
-### 🌀 What is REPL?
+### 💡 Why Modules?
 
-**REPL** stands for:
+- Earlier, JavaScript programs were small and simple.
+- Now, JavaScript powers full-scale apps — in both **browser** and **Node.js**.
+- As projects grow, splitting the code into **reusable modules** becomes necessary.
+- **Modules** improve **maintainability**, **reusability**, and **readability**.
 
-- **R** – Read  
-- **E** – Evaluate  
-- **P** – Print  
-- **L** – Loop  
+> ✅ Both Browser (via ES Modules) and Node.js (CommonJS) support modules.
 
-You can enter REPL by just typing:
+### 📦 What is a Module?
 
-```bash
-node
-```
-
-It gives you a live Node.js shell to write and test JavaScript code interactively.
-
-### 🔍 Behind the Scenes:
-
-When you run `node` in terminal:
-- It starts the **V8 engine** (built in C++).
-- V8 converts your JavaScript code to machine code and executes it.
+- A **module** is an encapsulated, self-contained block of code.
+- It has its own **scope** and can export values for other files to **import**.
 
 ---
 
-## 🌐 Global Object: Browser vs Node.js
+## ⚙️ Part 2: How It Works in Node.js
 
-### 🧭 In the Browser:
+### 🛠️ Step-by-Step
 
-Open DevTools Console and type:
-
-```js
-window === this     // true
-window === self     // true
-window === frames   // true
-```
-
-- All of them point to the same global object: `window`.
-
-### ⚙️ In Node.js:
-
-In your `app.js`, try:
-
-```js
-console.log(global);      // Node's global object
-console.log(this);        // Outputs: {}
-```
-
-- In Node, the global object is called `global`.
-- At the module level, `this` is `{}` (empty object).
-
-### 🔄 Confused? Use `globalThis`
-
-To have a **universal global object** across all environments:
-
-```js
-console.log(globalThis);
-```
-
-- ✅ Works in **Browser** and **Node**
-- ✅ Standardized by **OpenJS Foundation**
-
-### 🧩 What’s inside Node’s Global Object?
-
-- `setTimeout`
-- `setInterval`
-- `setImmediate`
-- `console`, `Buffer`, etc.
-
----
-
-## ✏️ Let's Write Some Code
-
-### 1️⃣ Create a Folder:
+#### 🔹 Step 1: Create a Folder
 
 ```bash
 mkdir namaste-node
 cd namaste-node
 ```
 
-### 2️⃣ Create a File `app.js`:
+#### 🔹 Step 2: Create Two Files
 
+- `app.js`
+- `sum.js`
+
+---
+
+### 📂 Case 1: Just Logging in Files
+
+**`app.js`**
 ```js
-var name = "Shivam Gupta";
-var a = 10;
-var b = 20;
-
-console.log(name);
-console.log(a + b);
+console.log("App.js Home File");
 ```
 
-### 3️⃣ Open VS Code Terminal:
-- Windows: `Ctrl + ~`
-- macOS: `Cmd + ~`
+**`sum.js`**
+```js
+console.log("Sum.js File");
+```
 
-### 4️⃣ Run the Program:
-
+**Output:**
 ```bash
-node app.js
+$ node app.js
+App.js Home File
 ```
 
-### ⚙️ What happens?
+> ❓ Why doesn’t `sum.js` execute?  
+> Because each file is a **separate module**. Node.js doesn't execute other files unless explicitly **imported** using `require`.
 
-Node passes `app.js` to the **V8 engine**, which converts the code into machine code and executes it.
+---
+
+### 📂 Case 2: Using `require`
+
+**`app.js`**
+```js
+require("./sum.js");
+console.log("App.js Home File");
+```
+
+**`sum.js`**
+```js
+console.log("Sum.js File");
+```
+
+**Output:**
+```bash
+Sum.js File  
+App.js Home File
+```
+
+> ✅ `require` loads and executes the code inside `sum.js`.
+
+---
+
+### 📂 Case 3: Using a Function Without Export
+
+**`sum.js`**
+```js
+console.log("Sum.js File");
+
+function calcSum(a, b) {
+  return a + b;
+}
+```
+
+**`app.js`**
+```js
+require("./sum.js");
+console.log("App.js Home File");
+
+calcSum(2, 3); // ❌ Error
+```
+
+**Output:**
+```bash
+ReferenceError: calcSum is not defined
+```
+
+> ❗ By default, variables/functions in one module are **not accessible** in another unless **explicitly exported**.
+
+---
+
+## 🧪 Part 3: Exporting and Importing Functions
+
+### 📂 Case 4: Using `module.exports` to Export
+
+**`sum.js`**
+```js
+console.log("Sum.js File");
+
+function calcSum(a, b) {
+  return a + b;
+}
+
+module.exports = calcSum;
+```
+
+**`app.js`**
+```js
+const calcSum = require("./sum.js");
+console.log("App.js Home File");
+
+console.log(calcSum(2, 3));
+```
+
+**Output:**
+```bash
+Sum.js File  
+App.js Home File  
+5
+```
+
+✅ Success! `calcSum` is now accessible in `app.js`.
+
+---
+
+## 🔁 Part 4: Types of Exports
+
+### 1️⃣ Default Export
+
+**`sum.js`**
+```js
+function calcSum(a, b) {
+  return a + b;
+}
+
+module.exports = calcSum;
+```
+
+**`app.js`**
+```js
+const add = require("./sum.js");  // you can rename it
+console.log(add(2, 3));           // ✅ 5
+```
+
+> 🔁 You can rename the import with default exports.
+
+---
+
+### 2️⃣ Named Exports
+
+**`sum.js`**
+```js
+function calcSum(a, b) {
+  return a + b;
+}
+
+const x = 20;
+
+module.exports = { calcSum, x };
+```
+
+**Option 1 - Destructured Import in `app.js`**
+```js
+const { calcSum, x } = require("./sum.js");
+
+console.log(x);              // 20
+console.log(calcSum(2, 3));  // 5
+```
+
+**Option 2 - Import Entire Object**
+```js
+const sumModule = require("./sum.js");
+
+console.log(sumModule.x);               // 20
+console.log(sumModule.calcSum(2, 3));   // 5
+```
+
+> 💡 Named exports are useful for exporting **multiple things** from one file.
 
 ---
 
 ## 📋 Recap Table
 
-| Feature                  | Browser      | Node.js     |
-|--------------------------|--------------|-------------|
-| Global Object            | `window`     | `global`    |
-| Common Global Object     | ✅ `globalThis` | ✅ `globalThis` |
-| `this` at top-level      | `window`     | `{}`        |
-| Engine                   | V8           | V8          |
+| Concept            | Description                           |
+|--------------------|---------------------------------------|
+| Module             | Encapsulated code in a file           |
+| `require()`        | Imports a module                      |
+| `module.exports`   | Exports code from a module            |
+| Default Export     | Single value export                   |
+| Named Export       | Multiple value export as object       |
+| Isolation          | Modules don’t share scope by default  |
 
 ---
 
@@ -180,16 +243,18 @@ Node passes `app.js` to the **V8 engine**, which converts the code into machine 
 
 In this episode, you learned:
 
-- How to install Node.js using NVM
-- What REPL is and how it works
-- The difference between global objects in browser and Node.js
-- How to run your first Node.js program
-- How `globalThis` simplifies global object handling
+- Why modular code is important  
+- How to use `require()` and `module.exports` in Node.js  
+- Differences between default and named exports  
+- How Node modules are isolated and must explicitly export code
 
-> Great work! Now you're ready to explore **Node.js modules** and more in the next episode.
+> Great job! 🎉  
+> Up next: **Episode 05 - The Module Wrapper Function** – where we’ll uncover how Node wraps your code under the hood.
 
 ---
 
-#### ✅ Happpy Learning:
+#### ✅ Happy Learning:
 
- - This content is part of my learning journey in Node.js. If you find any mistakes or want to suggest improvements, feel free to contribute. Let's learn and grow together!
+This content is part of my learning journey in Node.js.  
+If you spot any mistakes or want to suggest improvements, feel free to contribute.  
+Let’s learn and grow together! 🙌
